@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Planner Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Merriweather for "Book" feel, Inter for UI -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+
+    <div class="grid-bg"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <nav class="app-nav">
+        <div class="logo">Study Plan<span> Guide</span></div>
+    </nav>
+
+    <main class="app-container">
+
+        <!-- Step 1: Configuration Dashboard -->
+        <section id="step-config" class="view active-view">
+            <div class="dashboard-grid">
+                <!-- Left: Hero & Topic -->
+                <div class="dash-col fw-col">
+                    <header class="hero-header">
+                        <h1>Design your <br><span class="highlight">Learning Path</span></h1>
+                        <p class="subtitle">An adaptive AI architect for your study goals.</p>
+                    </header>
+
+                    <div class="input-card">
+                        <label class="floating-label">Core Subject / Topic</label>
+                        <input type="text" id="topic-title-input"
+                            placeholder="e.g. Convolutional Neural Networks, Quantum Mechanics" autocomplete="off">
+
+                        <label class="floating-label mt-4">Syllabus / Context (Recommended)</label>
+                        <textarea id="syllabus-input" rows="6"
+                            placeholder="Paste your syllabus, chapter list, or specific constraints here for a tailored plan..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Right: Constraints -->
+                <div class="dash-col sw-col">
+                    <div class="settings-card">
+                        <h3><ion-icon name="options-outline"></ion-icon> Blueprint Settings</h3>
+
+                        <div class="setting-group">
+                            <label>Time Budget</label>
+                            <div class="row-inputs">
+                                <div class="input-wrap">
+                                    <input type="number" id="hours-input" placeholder="-" min="1">
+                                    <span>Hrs/Day</span>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="number" id="days-input" placeholder="-" min="1">
+                                    <span>Days</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="setting-group">
+                            <label>Objective</label>
+                            <div class="chip-grid" id="goal-group">
+                                <button class="chip active" data-val="Exam Prep">Exam Prep</button>
+                                <button class="chip" data-val="Mastery">Deep Mastery</button>
+                                <button class="chip" data-val="Interview">Interview</button>
+                                <button class="chip" data-val="Crash Course">Crash Course</button>
+                            </div>
+                        </div>
+
+                        <div class="setting-group">
+                            <label>Expertise Level</label>
+                            <div class="segmented-control">
+                                <label><input type="radio" name="level" value="Beginner"
+                                        checked><span>Beginner</span></label>
+                                <label><input type="radio" name="level" value="Intermediate"><span>Intermediate</span></label>
+                                <label><input type="radio" name="level" value="Advanced"><span>Advanced</span></label>
+                            </div>
+                        </div>
+
+                        <button id="btn-generate" class="btn-primary">
+                            <span>Generate Blueprint</span>
+                            <ion-icon name="flash-outline"></ion-icon>
+                        </button>
+                    </div>
+
+                    <!-- Saved Plans Section -->
+                    <div class="saved-plans-section" style="margin-top: 2rem;">
+                        <h3
+                            style="margin-bottom:1rem;color:#888;font-size:0.9rem;text-transform:uppercase;letter-spacing:1px;">
+                            Saved Blueprints</h3>
+                        <div id="saved-list" class="saved-list">
+                            <!-- Dynamic Items -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 2: Intelligence Loading -->
+        <!-- Step 2: Intelligence Loading -->
+        <section id="step-loading" class="view hidden">
+            <div class="loading-wrapper">
+                <div class="data-stream-loader">
+                    <div class="scanner-line"></div>
+                    <div class="data-particle p1"></div>
+                    <div class="data-particle p2"></div>
+                    <div class="data-particle p3"></div>
+                    <div class="data-particle p4"></div>
+                    <div class="central-hub"></div>
+                </div>
+                <h2 id="loading-msg">Synthesizing Personal Strategy...</h2>
+                <div class="progress-bar">
+                    <div class="fill"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 4: Outcome -->
+        <section id="step-results" class="view hidden">
+            <header class="results-header">
+                <div>
+                    <h1 id="plan-topic">Topic Name</h1>
+                    <div id="feasibility-badge" class="feasibility-badge">Feasible</div>
+                    <p id="plan-meta">Time: 2h • Goal: Exam</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-secondary" id="btn-save">
+                        <ion-icon name="bookmark-outline"></ion-icon> Save
+                    </button>
+                    <button class="btn-secondary" id="btn-restart">New Plan</button>
+                </div>
+            </header>
+
+            <!-- Critical Info Block -->
+            <!-- Critical Info Block Removed as per request -->
+            <!-- <div class="info-grid"> ... </div> -->
+
+            <div class="plan-grid">
+                <!-- Timeline -->
+                <div class="timeline-col" id="timeline-container">
+                    <!-- Dynamic Items -->
+                </div>
+
+                <!-- Guidance Sidebar -->
+                <aside class="sidebar-col">
+                    <div class="card advice-card">
+                        <h4><ion-icon name="bulb-outline"></ion-icon> Exam Strategy</h4>
+                        <p id="strategy-text">...</p>
+                    </div>
+
+                    <div class="card focus-card">
+                        <h4>Critical Focus Areas</h4>
+                        <ul id="focus-list">
+                            <!-- Dynamic -->
+                        </ul>
+                    </div>
+
+                    <div class="card adapt-card">
+                        <h4><ion-icon name="options-outline"></ion-icon> Adaptation</h4>
+                        <p id="adaptation-text">...</p>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Detailed Sidebar -->
+    <div id="details-sidebar" class="details-sidebar">
+        <button id="btn-close-sidebar" class="btn-close"><ion-icon name="close-outline"></ion-icon></button>
+        <h2 id="sidebar-title">Topic Detail</h2>
+        <div class="sidebar-content">
+            <div class="sidebar-meta">
+                <span id="sidebar-duration" class="tag">00 Mins</span>
+                <span id="sidebar-intensity" class="tag">High</span>
+            </div>
+            <p id="sidebar-desc">Detailed explanation goes here.</p>
+
+            <div class="sidebar-subtopics">
+                <h4>Core Concepts</h4>
+                <ul id="sidebar-sublist">
+                    <!-- Dynamic -->
+                </ul>
+            </div>
+
+            <div class="sidebar-guidance">
+                <h4><ion-icon name="compass-outline"></ion-icon> Quick Tip</h4>
+                <p>Focus on understanding the underlying principles rather than rote memorization.</p>
+            </div>
+        </div>
+    </div>
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
