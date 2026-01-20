@@ -1,5 +1,4 @@
-const API_BASE_URL = "http://127.0.0.1:5001"; // TODO: CHANGE THIS TO YOUR RENDER URL AFTER DEPLOYMENT
-
+const API_BASE_URL = "https://study-plan-guidance.onrender.com/"; // <-- Paste here
 const state = {
     topic: "",
     hours: "",
