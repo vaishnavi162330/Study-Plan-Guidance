@@ -77,6 +77,10 @@ def generate_prompt(data):
     """
     return prompt
 
+@app.route('/', methods=['GET'])
+def home():
+    return "Backend is running! Use /api/generate-plan for requests."
+
 @app.route('/api/generate-plan', methods=['POST'])
 def generate_plan():
     try:
